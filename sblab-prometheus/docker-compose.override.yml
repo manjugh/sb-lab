@@ -1,0 +1,7 @@
+services:
+  prometheus:
+    ports:
+      - 0.0.0.0:9090:9090
+  grafana:
+    ports:
+      - 0.0.0.0:3000:3000
