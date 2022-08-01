@@ -6,4 +6,4 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'  # The HTTP resource path on which to fetch metrics from targets.
     scrape_interval: 2s                   # How frequently to scrape targets from this job.
     static_configs:                       # A static_config allows specifying a list of targets and a common label set for them
-      - targets: ['192.168.0.104:8080']
+      - targets: ['metrics:8080']

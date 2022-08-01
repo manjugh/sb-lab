@@ -7,3 +7,10 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   grafana:
     image: 'grafana/grafana'
+
+  metrics:
+    image: 'mgh/sblab-prometheus'
+    depends_on:
+      - prometheus
+      - grafana
+
