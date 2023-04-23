@@ -17,6 +17,8 @@ http://localhost:8080/metrics/hello?greeting=hello
 
 
 
+Addition of ALert manaeger: adding alert rules.
+
 Refernce:
 https://prometheus.io/docs/introduction/overview/
 https://micrometer.io/docs

@@ -7,3 +7,15 @@ scrape_configs:
     scrape_interval: 2s                   # How frequently to scrape targets from this job.
     static_configs:                       # A static_config allows specifying a list of targets and a common label set for them
       - targets: ['metrics:8080']
+  - job_name: 'alert_manager'         # The job name is assigned to scraped metrics by default.
+    metrics_path: '/metrics'  # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 2s                   # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: [ 'alertmanager:9093' ]
+rule_files:
+  - prometheus_rules.yml
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093

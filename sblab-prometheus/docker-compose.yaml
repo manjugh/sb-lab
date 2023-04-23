@@ -5,12 +5,17 @@ services:
     image: 'prom/prometheus'
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus_rules.yml:/etc/prometheus/prometheus_rules.yml
   grafana:
     image: 'grafana/grafana'
+
+  alertmanager:
+    image: 'prom/alertmanager'
+    depends_on:
+      - prometheus
 
   metrics:
     image: 'mgh/sblab-prometheus'
     depends_on:
       - prometheus
       - grafana
-

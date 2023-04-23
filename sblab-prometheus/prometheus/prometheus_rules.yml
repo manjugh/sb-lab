@@ -1,0 +1,27 @@
+groups:
+  - name: custom_rules
+    rules:
+      - record: node_memory_MemFree_percent
+        expr: 100 - (100 * node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+
+  - name: alert_rules
+    rules:
+      - alert: Instance down
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance [{{ $labels.instance}}] down"
+          description: "[{{ $labels.instance}}]  of job [{{ $labels.job}}] has been down for than 1 minute."
+
+  - name: custom_scheduler_rule
+    rules:
+      - alert: custom_scheduler_rule
+        expr: test_run3 == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Custom scheduler run"
+          description: "check"

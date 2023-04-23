@@ -30,10 +30,9 @@ public class MetricRestContoller {
             counter  = meterRegistry.counter("metrics_greeting","greetingType","hi");
         }
 
-
         counter.increment();
         log.info("Hello Services has been invoked");
-        return ResponseEntity.ok(new Greeting("hello",Instant.now()));
+        return ResponseEntity.ok(new Greeting(greeting,Instant.now()));
     }
 
 
